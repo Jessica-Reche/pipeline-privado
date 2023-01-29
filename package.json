@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint . --fix",
-    "build":"npm run build:prod"
+    "start": "node index.js"
     
   },
   "repository": {

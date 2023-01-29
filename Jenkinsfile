@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'npm run build'
+                sh 'npm start'
                 sh 'docker run -p 3000:8080 jolly-borg'
             }
         }
