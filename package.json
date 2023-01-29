@@ -1,0 +1,24 @@
+{
+  "name": "github-actios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --fix",
+    "build":"npm run build:prod"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jessica-Reche/githubActions_examples.git"
+  },
+  "author": "Jesica",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.3"},
+  "bugs": {
+    "url": "https://github.com/Jessica-Reche/githubActions_examples/issues"
+  },
+  "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme"
+}
