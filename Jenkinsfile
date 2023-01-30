@@ -12,17 +12,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent {
-                docker {
-                    image 'node:8.9.4'
-                    args '-p 8080:3000'
-                }
-            }
             steps {
-          
-                sh 'npm run start'
+                sh 'docker run -p 8080:3000 my-node-app'
             }
-           
         }
     }
 }
