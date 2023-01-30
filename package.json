@@ -1,11 +1,11 @@
 {
-  "name": "github-actios",
+  "name": "jenkins_nodejs_example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "start": "node index.js"
   },
   "repository": {
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Jessica-Reche/githubActions_examples/issues"
   },
-  "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme"
+  "homepage": "https://github.com/Jessica-Reche/githubActions_examples#readme",
+  "devDependencies": {
+    "eslint": "^8.33.0"
+  }
 }

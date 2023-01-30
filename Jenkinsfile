@@ -1,24 +1,24 @@
 pipeline {
-    agent any
-     tools {nodejs "nodejs"}
-    
-    stages {
-        stage('linter') {
-            steps {
-                sh 'npm install'
-                sh 'npm run lint'
-            }
-        }
-        stage('test') {
-            steps {
-                sh 'npm run test'
-            }
-        }
-        stage('deploy') {
-            steps {
-                sh 'npm start'
-                sh 'docker run -p 3000:8080 jolly-borg'
-            }
-        }
+  agent {
+    docker {
+      image 'node:14'
     }
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'npm test'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'docker run -p 8080:3000 my-node-app'
+      }
+    }
+  }
 }
