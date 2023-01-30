@@ -1,13 +1,12 @@
 pipeline {
-    agent { any }
+    agent any
     tools { nodejs "nodejs" }
     stages {
         stage('Linter') {
             steps {
                 sh 'npm install',
-                {
-                    sh 'npm run lint'
-                }
+                sh 'npm run lint'
+                
             }
         }
         stage('Test') {
