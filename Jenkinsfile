@@ -1,7 +1,5 @@
 pipeline {
-  tools {
-    nodejs 'nodejs'
-  }
+    agent { label 'nodejs'}
   stages {
     stage('linter') {
       steps {
