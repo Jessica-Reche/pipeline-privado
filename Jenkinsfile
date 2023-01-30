@@ -1,30 +1,31 @@
 pipeline {
-    agent any
-    tools {nodejs "nodejs"}
-  stages {
-    stage('linter') {
-      steps {
-        sh 'npm install',
-        sh 'npm run lint'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'npm test'
-      }
-    }
-    stage('Deploy') {
-      agent {
-        docker {
-          image 'node:14-alpine',
-          args '-p 8080:3000 -v /tmp:/tmp',
-
+    agent { any }
+    tools { nodejs "nodejs" }
+    stages {
+        stage('Linter') {
+            steps {
+                sh 'npm install',
+                {
+                    sh 'npm run lint'
+                }
+            }
         }
-      }
-        steps {
-            sh 'npm install',
-            sh 'npm start'
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'node:14-alpine',
+                    args '-p 8080:3000 -v /tmp:/tmp'
+                }
+            }
+            steps {
+                sh 'npm install',
+                sh 'npm start'
+            }
         }
     }
-  }
 }
