@@ -7,7 +7,6 @@
     "test": "jest",
     "lint": "eslint . --fix",
     "start": "node index.js"
-    
   },
   "repository": {
     "type": "git",
@@ -16,7 +15,9 @@
   "author": "Jesica",
   "license": "ISC",
   "dependencies": {
-    "jest": "^27.4.3"},
+    "express": "^4.18.2",
+    "jest": "^27.4.3"
+  },
   "bugs": {
     "url": "https://github.com/Jessica-Reche/githubActions_examples/issues"
   },
