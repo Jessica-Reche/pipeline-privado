@@ -1,9 +1,12 @@
 pipeline {
-  agent { label 'docker' }
+  tools {
+    nodejs 'nodejs'
+  }
   stages {
-    stage('Build') {
+    stage('linter') {
       steps {
-        sh 'npm install'
+        sh 'npm install',
+        sh 'npm run lint'
       }
     }
     stage('Test') {
@@ -12,9 +15,18 @@ pipeline {
       }
     }
     stage('Deploy') {
-      steps {
-        sh 'docker run -p 8080:3000 my-node-app'
+      agent {
+        docker {
+          image 'node:14-alpine',
+          label 'nodejs',
+           args '-p 8080:3000 -v /tmp:/tmp'
+
+        }
       }
+        steps {
+            sh 'npm install',
+            sh 'npm start'
+        }
     }
   }
 }
