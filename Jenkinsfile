@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Linter') {
             steps {
-                sh 'npm install',
+                sh 'npm install'
                 sh 'npm run lint'
                 
             }
@@ -17,12 +17,12 @@ pipeline {
         stage('Deploy') {
             agent {
                 docker {
-                    image 'node:14-alpine',
+                    image 'node:14-alpine'
                     args '-p 8080:3000 -v /tmp:/tmp'
                 }
             }
             steps {
-                sh 'npm install',
+                sh 'npm install'
                 sh 'npm start'
             }
         }
