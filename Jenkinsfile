@@ -1,20 +1,28 @@
 pipeline {
-  agent { docker 'node:14' }
-  stages {
-    stage('Build') {
-      steps {
-        sh 'npm install'
-      }
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'node:8.9.4'
+                    args '-p 8080:3000'
+                }
+            }
+            steps {
+          
+                sh 'npm run start'
+            }
+           
+        }
     }
-    stage('Test') {
-      steps {
-        sh 'npm test'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        sh 'docker run -p 8080:3000 my-node-app'
-      }
-    }
-  }
 }
