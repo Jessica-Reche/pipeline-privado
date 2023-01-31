@@ -2,11 +2,14 @@ pipeline {
     agent any 
     tools { nodejs "nodejs" }
     stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t my-node-app .'
+            }
+        }
         stage('Linter') {
             steps {
-                sh 'npm install'
                 sh 'npm run lint'
-                
             }
         }
         stage('Test') {
@@ -16,9 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'npm install'
-                sh 'npm start'
+                sh 'docker run -p 3000:3000 my-node-app'
             }
         }
-    }
 }
