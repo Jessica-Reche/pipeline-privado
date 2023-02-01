@@ -8,7 +8,7 @@ COPY . .
 RUN npm install
 
 # Especificar el puerto que se expondrá al host
-EXPOSE 3000
+EXPOSE 20000
 
 # Especificar la acción que se ejecutará al iniciar el contenedor
 CMD ["npm", "start"]
