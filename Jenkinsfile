@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t my-node-app .'
+                sh 'npm i'
             }
         }
         stage('Linter') {
@@ -17,6 +17,11 @@ pipeline {
                 sh 'npm test'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t my-node-app .'
+            }
+        }
         stage('Start') {
             steps {
                sh 'npm start'
@@ -27,5 +32,5 @@ pipeline {
                 sh 'docker run -p 20000:3000 my-node-app'
             }
         }
-}
+    }
 }
