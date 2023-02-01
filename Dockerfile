@@ -13,5 +13,3 @@ RUN npm install
 # Definir el puerto que se usará en el contenedor
 EXPOSE 3000
 
-# Especificar la acción que se ejecutará al iniciar el contenedor
-CMD ["npm", "start"]
