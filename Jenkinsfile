@@ -22,11 +22,7 @@ pipeline {
                 sh 'docker build -t my-node-app .'
             }
         }
-        stage('Start') {
-            steps {
-               sh 'npm start'
-            }
-        }
+       
         stage('Deploy') {
             steps {
                 sh 'docker run -p 20000:3000 my-node-app'
