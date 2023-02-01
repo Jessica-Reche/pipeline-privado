@@ -17,22 +17,20 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Start') {
-            steps {
-                sh 'npm start'
-            }
-        }
-        stage('Build and deploy Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 sh 'docker build -t my-node-app .'
-               
+            }
+        }
+        stage('Start') {
+            steps {
+               sh 'npm start'
+            }
+        }
+        stage('Deploy') {
+            steps {
                 sh 'docker run -p 20000:3000 my-node-app'
             }
-
-           
-        
         }
-       
-       
     }
 }
